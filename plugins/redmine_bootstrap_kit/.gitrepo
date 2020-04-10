@@ -1,0 +1,7 @@
+[subrepo]
+  cmdver = 0.4.0
+  commit = 791cdc9ddcd3f71ac27f6cb65edad9565c1623d6
+  method = rebase
+  parent = 1d238bf54df749df2804d313d1f50e1d79a84baa
+  branch = 0.2.5
+  remote = https://github.com/jbox-web/redmine_bootstrap_kit.git
