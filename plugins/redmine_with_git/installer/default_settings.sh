@@ -1,0 +1,7 @@
+export address_https=false
+export address_host=localhost
+export address_port=
+export git_repositories_hierarchical_organisation=true
+export gitolite_user=git
+export gitolite_user_home=/var/lib/git
+export redmine_git_hosting_ssh_key_name=redmine_git_hosting_id
