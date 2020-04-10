@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # Redmine - project management software
-# Copyright (C) 2006-2017  Jean-Philippe Lang
+# Copyright (C) 2006-2019  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,6 +21,10 @@ require File.expand_path('../../test_helper', __FILE__)
 
 class IssuePriorityTest < ActiveSupport::TestCase
   fixtures :enumerations, :issues
+
+  def setup
+    User.current = nil
+  end
 
   def test_named_scope
     assert_equal Enumeration.find_by_name('Normal'), Enumeration.named('normal').first
@@ -93,6 +99,13 @@ class IssuePriorityTest < ActiveSupport::TestCase
     prio.active = false
     prio.save
     assert_equal 'highest', IssuePriority.active.order(:position).last.position_name
+  end
+
+  def test_changing_default_priority_should_update_position_names
+    prio = IssuePriority.first
+    prio.is_default = true
+    prio.save
+    assert_equal %w(default high4 high3 high2 highest), IssuePriority.active.to_a.sort.map(&:position_name)
   end
 
   def test_destroying_a_priority_should_update_position_names

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # Redmine - project management software
-# Copyright (C) 2006-2017  Jean-Philippe Lang
+# Copyright (C) 2006-2019  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,6 +34,10 @@ class IssueRelationTest < ActiveSupport::TestCase
            :projects_trackers
 
   include Redmine::I18n
+
+  def setup
+    User.current = nil
+  end
 
   def test_create
     from = Issue.find(1)

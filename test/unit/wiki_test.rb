@@ -1,7 +1,7 @@
-# encoding: utf-8
-#
+# frozen_string_literal: true
+
 # Redmine - project management software
-# Copyright (C) 2006-2017  Jean-Philippe Lang
+# Copyright (C) 2006-2019  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,6 +21,10 @@ require File.expand_path('../../test_helper', __FILE__)
 
 class WikiTest < ActiveSupport::TestCase
   fixtures :projects, :wikis, :wiki_pages, :wiki_contents, :wiki_content_versions
+
+  def setup
+    User.current = nil
+  end
 
   def test_create
     wiki = Wiki.new(:project => Project.find(3))
@@ -78,7 +82,7 @@ class WikiTest < ActiveSupport::TestCase
   end
 
   def test_titleize
-    ja_test = "\xe3\x83\x86\xe3\x82\xb9\xe3\x83\x88".force_encoding('UTF-8')
+    ja_test = 'テスト'
     assert_equal 'Page_title_with_CAPITALES', Wiki.titleize('page title with CAPITALES')
     assert_equal ja_test, Wiki.titleize(ja_test)
   end
@@ -99,6 +103,7 @@ class WikiTest < ActiveSupport::TestCase
   end
 
   def test_destroy_should_remove_redirects_from_the_wiki
+    set_tmp_attachments_directory
     WikiRedirect.create!(:wiki_id => 1, :title => 'Foo', :redirects_to_wiki_id => 2, :redirects_to => 'Bar')
 
     Wiki.find(1).destroy
@@ -106,6 +111,7 @@ class WikiTest < ActiveSupport::TestCase
   end
 
   def test_destroy_should_remove_redirects_to_the_wiki
+    set_tmp_attachments_directory
     WikiRedirect.create!(:wiki_id => 2, :title => 'Foo', :redirects_to_wiki_id => 1, :redirects_to => 'Bar')
 
     Wiki.find(1).destroy
