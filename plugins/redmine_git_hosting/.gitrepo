@@ -1,0 +1,7 @@
+[subrepo]
+	cmdver = 0.4.0
+	commit = 870c4a6d2c8b7bafb6090069ef858c77b5d3af3f
+	method = rebase
+	parent = bbbcdf71683c3fff9e4500de19d308bc39cd426a
+  branch = 4.0.1
+  remote = https://github.com/jbox-web/redmine_git_hosting.git
