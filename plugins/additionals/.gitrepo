@@ -1,0 +1,7 @@
+[subrepo]
+	cmdver = 0.4.0
+	commit = 058e1f74a357ee4f16dfc69787bcc5fc6c122ca1
+	method = rebase
+	parent = 75df9b8e0cbf5b36f08b51db1196d707866ea88b
+  branch = v2-stable
+  remote = https://github.com/AlphaNodes/additionals.git
