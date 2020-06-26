@@ -23,6 +23,7 @@ PATH
       activemodel-associations
       eac_rails_utils (~> 0.11, >= 0.11.2)
       eac_ruby_utils (~> 0.33)
+      jquery-rails (~> 4.4)
       virtus
 
 PATH
