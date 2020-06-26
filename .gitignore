@@ -41,3 +41,4 @@
 /Gemfile.local
 
 /config/install.sh
+/public/assets/*
