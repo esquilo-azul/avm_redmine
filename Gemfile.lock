@@ -540,7 +540,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sshkey
-  tasks_scheduler (~> 0.4, >= 0.4.1)
+  tasks_scheduler (~> 0.4, >= 0.4.2)
   tzinfo-data
   will_paginate
   yard
